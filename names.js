@@ -1,26 +1,26 @@
-const  discord  =  require ( ' discord.js ' );
-const  client  =  nouveau  discord.Client ();
- préfixe  const =  ' ! ' ;
+const discord = require('discord.js');
+const client = new discord.Client();
+const prefix = '!';
 
 
-client . on ( " prêt " , () => {
-  var servers =  client . guildes . array (). carte ( g  =>  g . nom ). rejoindre ( ' , ' );
-  console . log ( " -------------------------------------- " );
+client.on("ready", () => {
+  var servers = client.guilds.array().map(g => g.name).join(',');
+  console.log("--------------------------------------");
   
-  client . utilisateur . setGame ( " #test " , " http://twitch.tv/highwaytraffic " ); // Joue à ...
+  client.user.setGame("#test", "http://twitch.tv/highwaytraffic"); //Joue à ...
 });
 
-client . on ( ' message ' , message  => {
-  if ( message . content . startsWith ( ' #test ' )) {
-      un message . répondre ( « oui » );
+client.on('message', message =>{
+  if(message.content.startsWith('#test')){
+      message.reply('yes');
      }
 });
 
-// identification
-var dt =  processus . env . DISCORD_TOKEN  ||  processus . argv [ 2 ];
+//identification
+var dt = process.env.DISCORD_TOKEN || process.argv[2];
 
-if ( ! dt) {
-    console . log ( ' votretoken ' );
+if (!dt) {
+    console.log('votretoken');
 }
 
-client . connexion (dt);
+client.login(dt);
