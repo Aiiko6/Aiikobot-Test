@@ -1,1 +1,1 @@
-worker: noeud name.js 
+worker: node name.js 
